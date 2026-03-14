@@ -19,7 +19,7 @@ This is the **frontend for the HR & Payroll Management System**. It provides an 
 ## Technology Stack
 - React
 - Axios (for API calls)
-- Tailwind CSS / Bootstrap (optional for styling)
+- Tailwind CSS (optional for styling)
 
 ## Installation
 1. Clone the repository:
