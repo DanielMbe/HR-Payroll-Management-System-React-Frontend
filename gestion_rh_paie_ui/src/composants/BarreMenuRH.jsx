@@ -12,13 +12,19 @@ export function BarreMenuRH({setActiveView}) {
     const initial = localStorage.getItem("loginID");
 
     const logout = async () => {
-        await Api.post('employes/logout/', { email : initial }).then(() => {
-            localStorage.removeItem("access");
-            localStorage.removeItem("refresh");
-            localStorage.removeItem("loginID");
-            navigate("/");
-        });
-    }
+        try {
+            const refresh = localStorage.getItem("refresh");
+            await Api.post('employes/logout/', { refresh }).
+            then(() => {
+                localStorage.removeItem("access");
+                localStorage.removeItem("refresh");
+                localStorage.removeItem("loginID");
+                navigate("/");
+            });
+        } catch (error) {
+            console.log(error.response?.data || error.message);
+        }
+    };
 
     return (
         <div className="bg-white h-24 w-full flex justify-around items-center px-3 border-b-1 border-gray-200 shadow-[0_4px_8px_-3px_rgb(229_231_235)]">
